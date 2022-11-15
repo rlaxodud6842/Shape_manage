@@ -1,4 +1,4 @@
-from modul/enum_collection import Menu
+from enum_collection import Menu
 from enum_collection import ShapeType
 import shape
 import shape_list
