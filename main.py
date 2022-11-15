@@ -28,36 +28,6 @@ class MainMenu:
         elif user_select == Menu.PRINT_SHAPE.value:
             shape_list.list.show_shape_list()
 
-class MainMenu:
-    def main_menu(self):
-        print("\n1)도형추가")
-        print("2)도형삭제")
-        print("3)도형출력")
-        print("4)종료")
-
-        while True:
-            try:
-                user_select = int(input("번호를 입력 해주세요:"))
-                break
-            except:
-                print("숫자로 번호를 다시 입력 해주세요\n")
-
-        if user_select == Menu.ADD_SHAPE.value:
-            self.select_shape()
-
-        elif user_select == Menu.DELETE_SHAPE.value:
-            main.delete_shape()
-            shape_list.list.del_shape(self.delete_shape_id)
-
-
-        elif user_select == Menu.PRINT_SHAPE.value:
-            shape_list.list.show_shape_list()
-
-
-        elif user_select == Menu.EXIT.value:
-            print("도형관리 프로그램을 종료합니다")
-            exit()
-
     def input_circle(self):
         self.x = int(input("중심좌표를 x를 입력하세요:"))
         self.y = int(input("중심좌표를 y를 입력하세요:"))
