@@ -1,4 +1,4 @@
-from enum_collection import Menu
+from modul/enum_collection import Menu
 from enum_collection import ShapeType
 import shape
 import shape_list
@@ -26,6 +26,10 @@ class MainMenu:
 
         elif user_select == Menu.PRINT_SHAPE.value:
             shape_list.list.show_shape_list()
+
+        elif user_select == Menu.EXIT.value:
+            quit()
+
 
     def input_circle(self): #원 정보 입력
         self.x = int(input("중심좌표를 x를 입력하세요:"))
@@ -60,4 +64,5 @@ class MainMenu:
 while True:
     main = MainMenu()
     main.main_menu()
+
 
