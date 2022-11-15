@@ -8,12 +8,12 @@ class Shapelist:
         self.shape_list.append(shape)
 
 class ActList(Shapelist):
-    def show_shape_list(self):
+    def show_shape_list(self): #도형 리스트 보여주기
         super().__init__()
         for i in range(self.list_len):
             self.shape_list[i].get_info()
 
-    def del_shape(self,deleted_id):
+    def del_shape(self,deleted_id): #유저에게 아이디 받아서 삭제
         super().__init__()
         for i in range(self.list_len):
             shape_id = self.shape_list[i].id

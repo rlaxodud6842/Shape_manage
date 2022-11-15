@@ -9,7 +9,6 @@ class Shape:
         self.get_round()
         self.get_area()
 
-
     def get_area(self):
         self.area = 1/2 * self.height * self.width
 
@@ -26,7 +25,6 @@ class Circle(Shape):
         self.coordinate_y = y
         self.radius = radius
         super().__init__()
-
     def get_area(self):
         self.area = math.pi * (self.radius^2)
 
@@ -63,9 +61,9 @@ class Rectangle(Shape):
         self.get_hypotenuse()
         self.get_eren()
         super().__init__()
+
     def get_hypotenuse(self):
         self.hypotenuse = math.sqrt(self.height ^ 2 + self.width ^ 2)
-
 
     def get_eren(self):
         self.eren =[(0, 0),(0,self.width),(self.width,self.width)]

@@ -24,20 +24,19 @@ class MainMenu:
             main.delete_shape()
             shape_list.list.del_shape(self.delete_shape_id)
 
-
         elif user_select == Menu.PRINT_SHAPE.value:
             shape_list.list.show_shape_list()
 
-    def input_circle(self):
+    def input_circle(self): #원 정보 입력
         self.x = int(input("중심좌표를 x를 입력하세요:"))
         self.y = int(input("중심좌표를 y를 입력하세요:"))
         self.r = int(input("반지름을 입력하세요:"))
 
-    def input_height_width(self):
+    def input_height_width(self): #나머지 도형 정보 입력
         self.height = int(input("세로 길이를 입력하세요:"))
         self.width = int(input("가로 길이를 입력하세요:"))
 
-    def delete_shape(self):
+    def delete_shape(self): #도형 삭제 입력
         self.delete_shape_id = int(input("삭제하고 싶은 도형의 ID를 입력해주세요:"))
 
     def select_shape(self): #도형 선택함수

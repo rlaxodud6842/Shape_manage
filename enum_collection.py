@@ -1,5 +1,4 @@
 from enum import Enum
-
 class Menu(Enum):
     ADD_SHAPE = 1
     DELETE_SHAPE = 2
