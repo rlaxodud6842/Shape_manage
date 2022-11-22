@@ -34,7 +34,6 @@ class Circle(Shape):
     def get_info(self):
         print("\nID:",self.id,"\n중심좌표:(",self.coordinate_x,",",self.coordinate_y,")","\n반지름:",self.radius,"\n면적:",self.area,"\n둘레:",self.round)
 
-
 #삼각형 클래스
 class Triangle(Shape):
     def __init__(self,h,w):
@@ -52,6 +51,7 @@ class Triangle(Shape):
 
     def get_info(self):
         print("\nID:",self.id,"\n가로,세로:(",self.height,",",self.width,")","\n면적:",self.area,"\n둘레:",self.round,"\n빗변길이:",self.hypotenuse,"\n꼭짓점 좌표:",self.eren)
+
 
 #사각형 클래스
 class Rectangle(Shape):

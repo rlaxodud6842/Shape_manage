@@ -1,25 +1,32 @@
-class Shapelist:
-    shape_list = []
-
-    def __init__(self):
-        self.list_len = len(self.shape_list)
-
-    def add_shape(self,shape):
-        self.shape_list.append(shape)
-
-class ActList(Shapelist):
-    def show_shape_list(self): #도형 리스트 보여주기
-        super().__init__()
-        for i in range(self.list_len):
-            self.shape_list[i].get_info()
-
-    def del_shape(self,deleted_id): #유저에게 아이디 받아서 삭제
-        super().__init__()
-        for i in range(self.list_len):
-            shape_id = self.shape_list[i].id
-
-            if deleted_id == shape_id:
-                self.shape_list.pop(i)
+import pickle
 
 
-list = ActList()
+
+
+class SetUpList:
+    #초기 리스트 설정
+    set_up_list = []
+
+    #파일을 열게 시키고, 열리면 loas_list를 set_up_list로 바꿔치기
+    try:
+        with open("shape.dat", "rb") as fr:
+            load_list = pickle.load(fr)
+            set_up_list = load_list
+    except:
+        pass
+
+    @staticmethod
+    def add_shape(shape):
+        SetUpList.set_up_list.append(shape)
+    @staticmethod
+    def get_list_len():
+        list_len = len(SetUpList.set_up_list)
+        return list_len
+    @staticmethod
+    def show_list():
+        for i in range(SetUpList.get_list_len()):
+            SetUpList.set_up_list[i].get_info()
+
+
+#SetUpList.add_shape('도형') 도형 추가 메소드
+#SetUpList.show_list() 도형 보여주기 메소드
