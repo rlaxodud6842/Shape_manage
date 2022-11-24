@@ -23,8 +23,9 @@ class MainMenu:
             self.select_shape()
 
         elif user_select == Menu.DELETE_SHAPE.value:
-            main.delete_shape()
-            shape_list.list.del_shape(self.delete_shape_id)
+            shape_list.SetUpList.show_list()
+            self.delete_shape()
+            shape_list.SetUpList.delete_shape(self.delete_shape_id)
 
         elif user_select == Menu.PRINT_SHAPE.value:
             shape_list.SetUpList.show_list()
@@ -38,10 +39,12 @@ class MainMenu:
         self.x = int(input("중심좌표를 x를 입력하세요:"))
         self.y = int(input("중심좌표를 y를 입력하세요:"))
         self.r = int(input("반지름을 입력하세요:"))
+        print("도형이 추가되었습니다")
 
     def input_height_width(self): #나머지 도형 정보 입력
-        self.height = int(input("세로 길이를 입력하세요:"))
         self.width = int(input("가로 길이를 입력하세요:"))
+        self.height = int(input("세로 길이를 입력하세요:"))
+        print("도형이 추가되었습니다")
 
     def delete_shape(self): #도형 삭제 입력
         self.delete_shape_id = int(input("삭제하고 싶은 도형의 ID를 입력해주세요:"))
@@ -49,20 +52,18 @@ class MainMenu:
     def select_shape(self): #도형 선택함수
         print("1.원형", "\n2.삼각형", "\n3.사각형")
         user_select_shpae = int(input(("어떤 도형을 추가 하시겠습니까:\n")))
-        shape_info = MainMenu()
 
         if user_select_shpae == ShapeType.CIRCLE.value:
-            shape_info.input_circle()
-            shape_list.SetUpList.add_shape(shape.Circle(shape_info.x, shape_info.y, shape_info.r))
+            self.input_circle()
+            shape_list.SetUpList.add_shape(shape.Circle(self.x, self.y, self.r))
 
         elif user_select_shpae == ShapeType.TRIANGLE.value:
-            shape_info.input_height_width()
-            shape_list.SetUpList.add_shape(shape.Triangle(shape_info.height, shape_info.width))
+            self.input_height_width()
+            shape_list.SetUpList.add_shape(shape.Triangle(self.width,self.height))
 
         elif user_select_shpae == ShapeType.RECTANGLE.value:
-            shape_info.input_height_width()
-            shape_list.SetUpList.add_shape(shape.Rectangle(shape_info.height, shape_info.width))
-
+            self.input_height_width()
+            shape_list.SetUpList.add_shape(shape.Rectangle(self.width,self.height))
 
 if __name__ == '__main__':
     while True:
