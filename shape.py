@@ -70,7 +70,7 @@ class Triangle(Shape):
         self.round = self.hypotenuse + self.height + self.width
 
     def get_info(self):
-        print("\nID:",self.id,"[삼각형]","\n가로,세로:(",self.height,",",self.width,")","\n면적:",self.area,"\n둘레:",self.round,"\n빗변길이:",self.hypotenuse,"\n꼭짓점 좌표:",self.eren)
+        print("\nID:",self.id,"[삼각형]","\n가로,세로:(",self.width,",",self.height,")","\n면적:",self.area,"\n둘레:",self.round,"\n빗변길이:",self.hypotenuse,"\n꼭짓점 좌표:",self.eren)
 
 #사각형 클래스
 class Rectangle(Shape):
