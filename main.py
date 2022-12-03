@@ -1,12 +1,11 @@
 from enum_collection import Menu
 from enum_collection import ShapeType
 import shape
-import shape_list
-import pickle
-
+from shape_list import SetUpList
+from filemanager import FileManager
 
 class MainMenu:
-    def main_menu(self):#메인 메소드
+    def main_menu(self,list):#메인 메소드
         print("\n1)도형추가")
         print("2)도형삭제")
         print("3)도형출력")
@@ -20,19 +19,18 @@ class MainMenu:
                 print("숫자로 번호를 다시 입력 해주세요\n")
 
         if user_select == Menu.ADD_SHAPE.value:
-            self.select_shape()
+            self.select_shape(list)
 
         elif user_select == Menu.DELETE_SHAPE.value:
-            shape_list.SetUpList.show_list()
-            self.delete_shape()
-            shape_list.SetUpList.delete_shape(self.delete_shape_id)
+            list.show_list()
+            list.delete_shape(self.input_delete_shape())
 
         elif user_select == Menu.PRINT_SHAPE.value:
-            shape_list.SetUpList.show_list()
+            list.show_list()
 
         elif user_select == Menu.EXIT.value:
-            with open("shape.dat", "wb") as file:
-                pickle.dump(shape_list.SetUpList.set_up_list, file)
+            save = FileManager()
+            save.save_shape(list.set_up_list)
             quit()
 
     def input_circle(self): #원 정보 입력
@@ -46,26 +44,30 @@ class MainMenu:
         self.height = int(input("세로 길이를 입력하세요:"))
         print("도형이 추가되었습니다")
 
-    def delete_shape(self): #도형 삭제 입력
+    def input_delete_shape(self): #도형 삭제 입력
         self.delete_shape_id = int(input("삭제하고 싶은 도형의 ID를 입력해주세요:"))
+        return self.delete_shape_id
 
-    def select_shape(self): #도형 선택함수
+    def select_shape(self,list): #도형 선택함수
         print("1.원형", "\n2.삼각형", "\n3.사각형")
         user_select_shpae = int(input(("어떤 도형을 추가 하시겠습니까:\n")))
 
         if user_select_shpae == ShapeType.CIRCLE.value:
             self.input_circle()
-            shape_list.SetUpList.add_shape(shape.Circle(self.x, self.y, self.r))
+            list.add_shape(shape.Circle(self.x, self.y, self.r))
 
         elif user_select_shpae == ShapeType.TRIANGLE.value:
             self.input_height_width()
-            shape_list.SetUpList.add_shape(shape.Triangle(self.width,self.height))
+            list.add_shape(shape.Triangle(self.width,self.height))
 
         elif user_select_shpae == ShapeType.RECTANGLE.value:
             self.input_height_width()
-            shape_list.SetUpList.add_shape(shape.Rectangle(self.width,self.height))
+            list.add_shape(shape.Rectangle(self.width,self.height))
 
 if __name__ == '__main__':
+    list = SetUpList()
+    main = MainMenu()
+    list.create_list()
+    list.load_list()
     while True:
-        main = MainMenu()
-        main.main_menu()
+        main.main_menu(list)

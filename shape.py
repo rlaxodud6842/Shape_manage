@@ -3,7 +3,7 @@ import math
 
 class Shape:
     id = 0
-    flag = True
+    is_id_loaded = True
     def __init__(self):
         self.load_id()
         Shape.id += 1
@@ -12,13 +12,13 @@ class Shape:
         self.get_area()
 
     def load_id(self):
-        if Shape.flag == True:
+        if Shape.is_id_loaded == True:
             try:
                 with open("shape.dat", "rb") as file:
                     load_list = pickle.load(file)
                     load_id = load_list[-1].id
                     Shape.id = load_id
-                    Shape.flag = False
+                    Shape.is_id_loaded = False
             except:
                 pass
 
