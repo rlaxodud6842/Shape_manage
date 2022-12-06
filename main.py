@@ -32,23 +32,23 @@ class MainMenu:
             save = FileManager()
             save.save_shape(list.set_up_list)
             quit()
-
-    def input_circle(self): #원 정보 입력
+    #원 정보 입력
+    def input_circle(self):
         self.x = int(input("중심좌표를 x를 입력하세요:"))
         self.y = int(input("중심좌표를 y를 입력하세요:"))
         self.r = int(input("반지름을 입력하세요:"))
         print("도형이 추가되었습니다")
-
-    def input_height_width(self): #나머지 도형 정보 입력
+    #나머지 도형 정보 입력
+    def input_height_width(self):
         self.width = int(input("가로 길이를 입력하세요:"))
         self.height = int(input("세로 길이를 입력하세요:"))
         print("도형이 추가되었습니다")
-
-    def input_delete_shape(self): #도형 삭제 입력
+    #도형 삭제 입력
+    def input_delete_shape(self):
         self.delete_shape_id = int(input("삭제하고 싶은 도형의 ID를 입력해주세요:"))
         return self.delete_shape_id
-
-    def select_shape(self,list): #도형 선택함수
+    #도형 선택함수
+    def select_shape(self,list):
         print("1.원형", "\n2.삼각형", "\n3.사각형")
         user_select_shpae = int(input(("어떤 도형을 추가 하시겠습니까:\n")))
 
